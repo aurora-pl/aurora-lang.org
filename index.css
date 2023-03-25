@@ -65,6 +65,25 @@ h2 {
     justify-content: center;
 }
 
+#right {
+    max-width: 50vw;
+}
+
+@media only screen and (max-width: 600px) {
+    #body {
+        flex-direction: column;
+    }
+    #top, #motto, #nav {
+        padding-left: 5%;
+    }
+    #top {
+        padding-top: 5%;
+    }
+    #right {
+        max-width: none;
+    }
+}
+
 p {
     font-family: Inter, sans-serif;
     font-weight: 200;
