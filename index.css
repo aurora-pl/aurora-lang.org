@@ -16,6 +16,7 @@ pre {
 }
 code {
     font-family: 'Space Mono', monospace;
+    font-variant-ligatures: none;
 }
 h1 {
     font-family: Inter, sans-serif;
