@@ -101,23 +101,23 @@ a:hover {
     transition: color 200ms;
 }
 
-kw {
+hl-kw {
     color: #bd94ff;
 }
 
-cm {
+hl-cm {
     font-style: italic;
     color: slateblue;
 }
 
-str {
+hl-str {
     color: mediumseagreen;
 }
 
-act {
+hl-act {
     color: lightpink;
 }
 
-num {
+hl-num {
     color: deepskyblue;
 }
