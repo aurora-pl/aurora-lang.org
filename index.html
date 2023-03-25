@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aurora Language</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="body">
+        <div>
+            <div id="top">
+                <img src="https://github.com/aurora-pl/resources/raw/main/aurora_800.png" id="logoimg">
+                <h1 id="bigtitle">urora</h1>
+            </div>
+            <h2 id="motto">An automation tool for the modern age.</h2>
+            <ul id="nav">
+                <li><a href="/about" class="navlink">About</a></li>
+                <li><a href="/docs" class="navlink">Docs</a></li>
+                <li><a href="https://github.com/aurora-pl" class="navlink">Github</a></li>
+                <li><a href="/forum" class="navlink">Community</a></li>
+                <li><a href="/get" class="navlink">Get</a></li>
+            </ul>
+        </div>
+        <div style="max-width: 50vw; margin-left: 5%">
+            <h1>Welcome to Aurora.</h1>
+            <p>Aurora is a scripting language that is imperative, dynamically typed, and compiled. It's inspired by
+                <a href="https://wikipedia.org/wiki/Rexx">Rexx</a>,
+                <a href="https://wikipedia.org/wiki/Lua_(programming_language)">Lua</a>,
+                and <a href="https://wikipedia.org/wiki/Perl">Perl</a>.
+            </p>
+            <h1>An introduction.</h1>
+            <p>Aurora is <i>imperative</i>, which means your program is described as a list of actions for the computer to carry out.
+            Aurora is also <i>dynamically typed</i>, which means that variables are not bound to a certain type&mdash; but can hold
+            any value.</p>
+<pre><code><kw>sub</kw> say_hi_to name
+    <cm># an action</cm>
+    <act>print</act> <str>"Hi, "</str>, name, <str>"!"</str>
+<kw>end</kw>
+<act>say_hi_to</act> <str>"World"</str>
+<cm># Hi, World!</cm></code></pre>
+            <p>It's meant for automation (think shell scripting), text processing, and general scripting applications.
+               The language is simple enough to become fluent in within an hour, but powerful enough to replace your
+               dusty Perl and Bash scripts. Filesystem operations, report generation, command execution&mdash; all what Aurora's designed for.</p>
+<pre><code><kw>sub</kw> backup_file name
+    new = name + <str>“.bak”</str>
+    <act>move</act> name, new
+<kw>end</kw>
+
+<kw>for</kw> file, dir()
+    <act>backup_file</act> file
+    <act>print</act> <str>“Backed up “</str>, file
+<kw>end</kw></code></pre>
+            <h1>Values</h1>
+            <p>Aurora keeps simple by removing the concept of null. All variables <strong>must</strong> have a value.
+            In Aurora, there are functions (marked 'fn') which must return a value, and subroutines (marked 'sub') which cannot
+            return a value. Functions can be called in any context, but subroutines can only be called outside of expressions.
+            This distinction allows Aurora to exclude the concept of null.
+            Functions and subroutines are first-class values in Aurora, and are also closures.</p>
+<pre><code><kw>fn</kw> fib n
+    <kw>if</kw> n < <num>0</num>
+        <kw>return</kw> n
+    <kw>else</kw>
+        <kw>return</kw> fib(n - <num>1</num>) + fib(n - <num>2</num>)
+    <kw>end</kw>
+<kw>end</kw>
+
+<kw>sub</kw> print_fib_of n
+    <act>print</act> <str>“fib(“</str>, n, <str>“) : “</str>, fib(n)
+<kw>end</kw>
+
+<kw>for</kw> i, range(<num>20</num>)
+    <act>print_fib_of</act> n
+<kw>end</kw>
+</code></pre>
+            <h1>Data Structures</h1>
+            <p>Aurora has two primitive data structures: arrays and maps. Arrays are dynamic, and grow/shrink as needed.
+            Map keys can be any value, and so can the values in the map.</p>
+<pre><code>my_map = {
+    <str>"foo"</str>: <num>13</num>,
+    <str>"bar"</str>: <str>"baz"</str>,
+    <num>96.7</num>: <str>"fahrenheit"</str>
+}
+<act>print</act> my_map:<str>"bar"</str> <cm># baz</cm>
+my_list = { <num>1</num>, <str>"foo"</str>, { <num>3</num>, <num>4</num> }, <kw>false</kw> }
+my_list:<num>0</num> = <num>3</num>
+<act>print</act> my_list:<num>0</num> <cm># 3</cm>
+</code></pre>
+            <h1>Control Flow</h1>
+            <p>Aurora has the basic control flow you'd expect: if-else, while loops, and for loops. It also has select (a case construct), until (inverse while), unless (inverse if), and switch (switch-case).</p>
+<pre><code><kw>sub</kw> fizzbuzz n -> <kw>select</kw>
+    <kw>case</kw> i % <num>15</num> == <num>0</num>
+        <act>print</act> <str>“FizzBuzz “</str>, i
+    <kw>end</kw>
+    <kw>case</kw> i % <num>3</num> == <num>0</num>
+        <act>print</act> <str>“Fizz “</str>, i
+    <kw>end</kw>
+    <kw>case</kw> i % <num>5</num> == <num>0</num>
+        <act>print</act> <str>“Buzz “</str>, i
+    <kw>end</kw>
+    <kw>else</kw>
+        <act>print</act> i
+    <kw>end</kw>
+<kw>end</kw>
+
+input = <kw>false</kw>
+<kw>until</kw> input
+    input = num(ask(<str>“Input a number: “</str>))
+<kw>end</kw>
+
+<kw>for</kw> i, range(input)
+    <act>fizzbuzz</act> i
+<kw>end</kw>
+</code></pre>
+            <h1>That's it!</h1>
+            <p>You're now equipped to start writing programs in Aurora. Go forth and write your own programs!</p>
+        </div>
+    </div>
+</body>
+</html>
