@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="body">
-        <div>
+        <div id="left">
             <div id="top">
                 <img src="https://github.com/aurora-pl/resources/raw/main/aurora_800.png" id="logoimg">
                 <h1 id="bigtitle">urora</h1>
@@ -30,11 +30,11 @@
                 and <a href="https://wikipedia.org/wiki/Perl">Perl</a>.
             </p>
             <h1>An introduction.</h1>
-            <p>Aurora is <i>imperative</i>, which means your program is described as a list of hl-actions for the computer to carry out.
+            <p>Aurora is <i>imperative</i>, which means your program is described as a list of actions for the computer to carry out.
             Aurora is also <i>dynamically typed</i>, which means that variables are not bound to a certain type&mdash; but can hold
             any value.</p>
 <pre><code><hl-kw>sub</hl-kw> say_hi_to name
-    <hl-cm># an hl-action</hl-cm>
+    <hl-cm># an action</hl-cm>
     <hl-act>print</hl-act> <hl-str>"Hi, "</hl-str>, name, <hl-str>"!"</hl-str>
 <hl-kw>end</hl-kw>
 <hl-act>say_hi_to</hl-act> <hl-str>"World"</hl-str>
@@ -44,7 +44,7 @@
                dusty Perl and Bash scripts. Filesystem operations, report generation, command execution&mdash; all what Aurora's designed for.</p>
 <pre><code><hl-kw>sub</hl-kw> backup_file name
     new = name + <hl-str>“.bak”</hl-str>
-    <hl-act>move</hl-act> name, new
+    <hl-act>copy</hl-act> name, new
 <hl-kw>end</hl-kw>
 
 <hl-kw>for</hl-kw> file, dir()
@@ -52,7 +52,7 @@
     <hl-act>print</hl-act> <hl-str>“Backed up “</hl-str>, file
 <hl-kw>end</hl-kw></code></pre>
             <h1>Values</h1>
-            <p>Aurora keeps simple by removing the concept of null. All variables <hl-strong>must</hl-strong> have a value.
+            <p>Aurora keeps simple by removing the concept of null. All variables <strong>must</strong> have a value.
             In Aurora, there are functions (marked 'fn') which must return a value, and subroutines (marked 'sub') which cannot
             return a value. Functions can be called in any context, but subroutines can only be called outside of expressions.
             This distinction allows Aurora to exclude the concept of null.
@@ -73,8 +73,8 @@
     <hl-act>print_fib_of</hl-act> n
 <hl-kw>end</hl-kw>
 </code></pre>
-            <h1>Data hl-structures</h1>
-            <p>Aurora has two primitive data hl-structures: arrays and maps. Arrays are dynamic, and grow/shrink as needed.
+            <h1>Data structures</h1>
+            <p>Aurora has two primitive data structures: arrays and maps. Arrays are dynamic, and grow/shrink as needed.
             Map keys can be any value, and so can the values in the map.</p>
 <pre><code>my_map = {
     <hl-str>"foo"</hl-str>: <hl-num>13</hl-num>,
@@ -87,8 +87,8 @@ my_list:<hl-num>0</hl-num> = <hl-num>3</hl-num>
 <hl-act>print</hl-act> my_list:<hl-num>0</hl-num> <hl-cm># 3</hl-cm>
 </code></pre>
             <h1>Control Flow</h1>
-            <p>Aurora has the basic control flow you'd expect: if-else, while loops, and for loops. It also has select (a case conhl-struct), until (inverse while), unless (inverse if), and switch (switch-case).</p>
-<pre><code><hl-kw>sub</hl-kw> fizzbuzz n -> <hl-kw>select</hl-kw>
+            <p>Aurora has the basic control flow you'd expect: if-else, while loops, and for loops. It also has select (a case construct), until (inverse while), unless (inverse if), and switch (switch-case).</p>
+<pre><code><hl-kw>sub</hl-kw> fizzbuzz i -> <hl-kw>select</hl-kw>
     <hl-kw>case</hl-kw> i % <hl-num>15</hl-num> == <hl-num>0</hl-num>
         <hl-act>print</hl-act> <hl-str>“FizzBuzz “</hl-str>, i
     <hl-kw>end</hl-kw>
@@ -105,7 +105,7 @@ my_list:<hl-num>0</hl-num> = <hl-num>3</hl-num>
 
 input = <hl-kw>false</hl-kw>
 <hl-kw>until</hl-kw> input
-    input = hl-num(ask(<hl-str>“Input a hl-number: “</hl-str>))
+    input = num(ask(<hl-str>“Input a number: “</hl-str>))
 <hl-kw>end</hl-kw>
 
 <hl-kw>for</hl-kw> i, to(input)

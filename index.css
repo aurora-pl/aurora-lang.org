@@ -83,6 +83,9 @@ h2 {
     #right {
         max-width: none;
     }
+    #left {
+        position: initial;
+    }
 }
 
 p {
